@@ -44,9 +44,12 @@ class Downloader:
                 raise e
             os.remove(os.path.join(self.path, f'{self.name}.mp4'))
 
-click.option()
-            
-def main():
+@click.command()
+@click.option("--choice", "-c", is_flag = True, help="Enter either 'mp3' or 'mp4' to decide file format.")
+@click.option("--link", "-l", multiple = True, help='Enter the youtube link.')
+@click.option("--output", "-o", multiple = True, help='Enter the desired file name.')
+@click.option("--path", "-p", multiple = True, help='Enter the desired file output path, leave blank to place video in default downloads folder.')           
+def main(choice,link,output,path):
 
     song = Downloader("https://youtu.be/atgjKEgSqSU?si=_OrwASXqEg5g6_Bk", ".\\downloads", "mp4", "ariamath")
     song.folders()
